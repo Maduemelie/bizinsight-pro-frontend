@@ -24,8 +24,8 @@
 // export default HeroSection;
 import React from 'react';
 import { Link } from 'react-router-dom';
-import HeroImage from '../img/heroImage.jpg';
-import '../style/HeroSection.css';
+import HeroImage from '../../img/heroImage.jpg';
+import "../../style/HeroSection.css";
 
 const HeroSection = () => {
   return (

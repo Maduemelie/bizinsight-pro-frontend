@@ -1,0 +1,47 @@
+/* Signup.css */
+
+.signup-page {
+  background-color: #F0F0F0;
+  padding: 20px;
+  text-align: center;
+ margin: 20px auto;
+ width: 50%;
+}
+
+h2 {
+  color: #004B8D;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  border: none;
+}
+
+button[type="submit"] {
+  background-color: #00AEEF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #002D56;
+}

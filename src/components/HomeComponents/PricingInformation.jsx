@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/PricingInformation.css';
+import '../../style/PricingInformation.css';
 const PricingInformation = () => {
   const pricingTiers = [
     {

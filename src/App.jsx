@@ -1,42 +1,30 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from './components/Header';
-import Dashboard from './components/Dashboard';
-import Sales from './components/Sales';
-import Inventory from './components/Inventory';
-import Customers from './components/Customers';
-import Reports from './components/Report';
-import Settings from './components/Settings';
+import Dashboard from './components/HomeComponents/Dashboard';
+import Features from './components/Features';
+import Pricing from './components/Pricing';
+import Login from './components/Login';
+import Signup from './components/Signup';
 import Footer from './components/Footer';
-// import HeroSection from './components/HeroSection'; 
 
-/**
- * Render the main application component.
- * @returns {JSX.Element} The rendered application component.
- */
 const App = () => {
-  return ( 
-  <div>
-      {/*Use the Router component to enable routing in the application*/}
-    <Router>
-      {/* Render the Header component */}
-      <Header />
+  return (
+    <div>
+      <Router>
+        <Header />
 
-      {/* Define the routes */}
-      <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/sales" element={<Sales />} />
-        <Route path="/inventory" element={<Inventory />} />
-        <Route path="/customers" element={<Customers />} />
-        <Route path="/reports" element={<Reports />} />
-        <Route path="/settings" element={<Settings />} />
-      </Routes>
-    </Router>
-    <Footer/>
-  </div>
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </Router>
+      <Footer />
+    </div>
   );
 }
 
 export default App;
-

@@ -10,6 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
   }
   
 
@@ -51,4 +52,25 @@
 .navigation li:last-child a {
     margin-right: 30px; /* Add margin to the right */
   }
+  @media (max-width: 600px) {
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
   
+  /* Styles for screens between 600px and 900px */
+  @media (min-width: 601px) and (max-width: 900px) {
+    .header {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+  
+  /* Styles for screens larger than 900px */
+  @media (min-width: 901px) {
+    .header {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+}

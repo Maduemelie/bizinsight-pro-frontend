@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/ValueProposition.css';
+import '../../style/ValueProposition.css';
 
 const ValueProposition = () => {
   return (
@@ -11,7 +11,7 @@ const ValueProposition = () => {
         you can make informed decisions that drive growth and efficiency.
       </p>
       <p className="value-benefits">
-        Discover how BizInsight Pro can help you:
+        Discover how BizInsight Pro can help you:</p>
         <ul>
           <li>Optimize sales strategies with comprehensive analytics.</li>
           <li>Efficiently manage inventory to prevent stockouts and overstocking.</li>
@@ -19,7 +19,7 @@ const ValueProposition = () => {
           <li>Track finances with accuracy, enabling smarter financial planning.</li>
           {/* Add more benefits as needed */}
         </ul>
-      </p>
+      
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import HeroSection from "./HeroSection";
-import FeaturesOverview from "./Feactures";
+import FeaturesOverview from "../Feactures";
 import ValueProposition from "./ValueProposition";  
 import Testimonials from "./Testimonials";
 import PricingInformation from "./PricingInformation";
