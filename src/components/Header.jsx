@@ -16,6 +16,7 @@ const Header = () => {
           <li><Link to="/pricing">Pricing</Link></li>
           <li><Link to="/login">Login</Link></li>
           <li><Link to="/signup">Sign Up</Link></li>
+          {/* <li><Link to="/inventory">Inventory</Link></li> */}
         </ul>
       </nav>
     </header>

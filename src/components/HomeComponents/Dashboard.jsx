@@ -4,7 +4,7 @@ import ValueProposition from "./ValueProposition";
 import Testimonials from "./Testimonials";
 import PricingInformation from "./PricingInformation";
 
-const Dashboard = () => {  
+const Dashboard = () => {
   return (
     <div>
       <HeroSection />

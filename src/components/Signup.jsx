@@ -14,6 +14,7 @@ const SignUp = () => {
         <input type='password' placeholder='Confirm Password'name='ConfirmPassword' id='ConfirmPassword' />
         <button type="submit">Sign Up</button>
       </form>
+      <p className="signup-text">Already have an account? <a href="/login">Login</a></p>
     </div>
   );
 }

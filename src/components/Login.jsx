@@ -1,4 +1,5 @@
 import React from 'react';
+import '../style/Login.css'
 
 const LoginPage = () => {
   return (
@@ -9,6 +10,9 @@ const LoginPage = () => {
         <input type="password" placeholder="Password" />
         <button type="submit">Login</button>
       </form>
+      <p className="signup-text">
+        Don't have an account? <a href="/signup">signup</a>.
+      </p>
     </div>
   );
 };

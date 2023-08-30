@@ -1,18 +1,21 @@
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    background-color: rgba(0, 75, 141, 0.8); /* Primary color: Deep Blue with 0.8 opacity */
-    padding: 20px;
-    color: #F0F0F0; /* Text color: Light Gray */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background-color: rgba(
+    0,
+    75,
+    141,
+    0.8
+  ); /* Primary color: Deep Blue with 0.8 opacity */
+  padding: 20px;
+  color: #f0f0f0; /* Text color: Light Gray */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .logo {
   display: flex;
@@ -41,36 +44,36 @@
 }
 
 .navigation li a {
-  color: #F0F0F0; /* Text color: Light Gray */
+  color: #f0f0f0; /* Text color: Light Gray */
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .navigation li a:hover {
-  color: #FF9900; /* Accent color: Orange */
+  color: #ff9900; /* Accent color: Orange */
 }
 .navigation li:last-child a {
-    margin-right: 30px; /* Add margin to the right */
+  margin-right: 30px; /* Add margin to the right */
+}
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
   }
-  @media (max-width: 600px) {
-    .header {
-      flex-direction: column;
-      text-align: center;
-    }
+}
+
+/* Styles for screens between 600px and 900px */
+@media (min-width: 601px) and (max-width: 900px) {
+  .header {
+    flex-direction: row;
+    justify-content: center;
   }
-  
-  /* Styles for screens between 600px and 900px */
-  @media (min-width: 601px) and (max-width: 900px) {
-    .header {
-      flex-direction: row;
-      justify-content: center;
-    }
+}
+
+/* Styles for screens larger than 900px */
+@media (min-width: 901px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
   }
-  
-  /* Styles for screens larger than 900px */
-  @media (min-width: 901px) {
-    .header {
-      flex-direction: row;
-      justify-content: space-between;
-    }
 }

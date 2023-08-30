@@ -1,29 +1,33 @@
 /* Signup.css */
 
 .signup-page {
-  background-color: #F0F0F0;
+  /* background-color: #F0F0F0; */
   padding: 20px;
   text-align: center;
- margin: 20px auto;
- width: 50%;
+  margin: 30px auto;
+  width: 50%;
 }
 
 h2 {
-  color: #004B8D;
+  color: #004b8d;
   margin-top: 40px;
   margin-bottom: 20px;
 }
 
 form {
+  background-color: #f0f0f0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-input[type="text"],
-input[type="password"] {
+input[type='text'],
+input[type='password'] {
   width: 50%;
   padding: 10px;
   margin-bottom: 10px;
@@ -32,8 +36,8 @@ input[type="password"] {
   border: none;
 }
 
-button[type="submit"] {
-  background-color: #00AEEF;
+button[type='submit'] {
+  background-color: #00aeef;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -42,6 +46,21 @@ button[type="submit"] {
   transition: background-color 0.3s;
 }
 
-button[type="submit"]:hover {
-  background-color: #002D56;
+button[type='submit']:hover {
+  background-color: #002d56;
+}
+
+.signup-text {
+  color: #666666;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+.signup-text a {
+  color: #00aeef;
+  text-decoration: none;
+}
+
+.signup-text a:hover {
+  text-decoration: underline;
 }

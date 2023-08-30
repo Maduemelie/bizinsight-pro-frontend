@@ -1,4 +1,7 @@
 {
-    "codeium.enableSearch": true,
-    "codeium.aggressiveShutdown": false
+  "codeium.enableSearch": true,
+  "codeium.aggressiveShutdown": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
