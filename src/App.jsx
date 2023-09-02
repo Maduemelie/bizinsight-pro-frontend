@@ -7,6 +7,7 @@ import Pricing from './components/Pricing';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Footer from './components/Footer';
+import PersonalAcountHome from './components/PersonalAcountHome';
 
 const App = () => {
   return (
@@ -19,9 +20,10 @@ const App = () => {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/PersonalAcountHome" element={<PersonalAcountHome />} />
         </Routes>
       </Router>
-      
+
       <Footer />
     </div>
   );
