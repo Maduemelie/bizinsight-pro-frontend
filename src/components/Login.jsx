@@ -3,12 +3,12 @@ import '../style/Login.css';
 import axios from 'axios';
 import {  useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+const LoginPage = ({  setIsLoggedIn }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
-
+ const [error, setError] = useState('');
   const handleChange = (e) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -23,15 +23,19 @@ const handleLogin = async (e) => {
       'http://localhost:3500/api/v1/auth/login',
       formData
     );
-    console.log(response.data);
-    
-    
-   navigate('/PersonalAcountHome');
+    if (response.data.isLoggedIn) {
+      setIsLoggedIn(true);
+      navigate('/PersonalDashboard');
+    } 
   } catch (error) {
     console.error(error);
-    // Handle login error
+   setError('An error occurred while logging in. Please try again later.');
   }
 };
+
+
+
+
 
   return (
     <div className="login-page">
@@ -53,6 +57,8 @@ const handleLogin = async (e) => {
         />
         <button type="submit">Login</button>
       </form>
+      {error && <div className="error-message">{error}</div>}{' '}
+      {/* Display the error message */}
       <p className="signup-text">
         Don't have an account? <a href="/signup">signup</a>.
       </p>
