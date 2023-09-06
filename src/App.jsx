@@ -8,38 +8,39 @@ import Pricing from './components/Pricing';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Footer from './components/Footer';
-import PersonalDashboard from './components/PersonalDashboard';
+import PersonalDashboard from './components/PersonalDashboard/PersonalDashboard';
 
 const App = () => {
   // Initialize the authentication state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState(null);
 
   return (
     <div>
       <Router>
         <Header isLoggedIn={isLoggedIn} />
         <Routes>
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/features" element={<Features />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route
             path="/login"
-            element={<Login setIsLoggedIn={setIsLoggedIn} />}
+            element={
+              <Login setIsLoggedIn={setIsLoggedIn} setUserData={setUserData} />
+            }
           />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/PersonalDashboard" element={<PersonalDashboard />} />
+          <Route
+            path="/PersonalDashboard"
+            element={<PersonalDashboard userData={userData} />}
+          />
         </Routes>
       </Router>
 
       <Footer />
+      
     </div>
   );
 }
 
 export default App;
-// Dashboard
-// Sales
-// Inventory
-// Customers
-// Reports
-// Settings
