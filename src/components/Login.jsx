@@ -23,9 +23,10 @@ const handleLogin = async (e) => {
       'http://localhost:3500/api/v1/auth/login',
       formData
     );
-    console.log(response.data.user)
+    console.log(response.data)
     if (response.data.isLoggedIn) {
       setIsLoggedIn(true);
+      // console.log(response.data.user)
       setUserData(response.data.user)
       navigate('/PersonalDashboard');
     } 

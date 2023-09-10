@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import UserProfile from './UserProfile';
-import '../../style/PersonalDashboard.css'
+import axios from 'axios'; // Import axios for HTTP requests
+import '../../style/PersonalDashboard.css';
 
-const PersonalDashboard = ({ userData }) => {
+const PersonalDashboard = ({ userData, setUserData, isLoggedIn }) => {
+  // console.log(userData)
   const [isUploading, setIsUploading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -10,34 +12,60 @@ const PersonalDashboard = ({ userData }) => {
     setSelectedFile(e.target.files[0]);
   };
 
-  const handleUpload = async () => {
-    // You can implement the logic to upload the selectedFile to the server here.
-    // You may need to use a library like axios to send the file to your backend.
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    if (isLoggedIn) {
+      try {
+        const formData = new FormData();
+        formData.append('profilePicture', selectedFile);
+        formData.append('userData', JSON.stringify(userData));
 
-    // After successful upload, you can update the user's profile picture in the userData state.
-    // For example:
-    // const response = await uploadProfilePicture(selectedFile);
-    // if (response.status === 200) {
-    //   const updatedUserData = { ...userData, profilePicture: response.data.profilePicture };
-    //   setUserData(updatedUserData);
-    // }
+        const response = await axios.post(
+          'http://localhost:3500/api/v1/upload',
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        );
 
-    // Reset the state
-    setIsUploading(false);
-    setSelectedFile(null);
+        if (response.status === 200) {
+          const updatedUserData = {
+            ...userData,
+            profilePicture: {
+              data: response.data.user.profilePicture.data,
+              contentType: response.data.user.profilePicture.contentType,
+            },
+          };
+          setUserData(updatedUserData);
+
+          // Reset the state
+          setIsUploading(false);
+          setSelectedFile(null);
+        }
+      } catch (error) {
+        console.error('Error uploading profile picture:', error);
+      }
+    }
   };
 
+
   return (
-    <div className="personal-dashboard">
+    <div className="personal-dashboard" encType="multipart/form-data">
       <UserProfile user={userData} />
       {isUploading ? (
-        <div className="file-upload-form">
+        <form className="file-upload-form">
           {/* Display the file upload form */}
-          <input type="file" onChange={handleFileChange} />
+          <input
+            type="file"
+            name="profilePicture"
+            onChange={handleFileChange}
+          />
           <button className="upload-button" onClick={handleUpload}>
             Upload
           </button>
-        </div>
+        </form>
       ) : (
         <button
           className="upload-profile-button"
