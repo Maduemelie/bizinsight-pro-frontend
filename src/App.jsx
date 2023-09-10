@@ -33,7 +33,15 @@ const App = () => {
                 />
               }
             />
-            <Route path="/signup" element={<Signup />} />
+            <Route
+              path="/signup"
+              element={
+                <Signup
+                  setUserData={setUserData}
+                  setIsLoggedIn={setIsLoggedIn}
+                />
+              }
+            />
             <Route
               path="/PersonalDashboard"
               element={
