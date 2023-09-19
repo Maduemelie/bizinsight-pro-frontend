@@ -3,7 +3,7 @@ import '../style/Login.css';
 import axios from 'axios';
 import {  useNavigate } from 'react-router-dom';
 
-const LoginPage = ({  setIsLoggedIn }) => {
+const LoginPage = ({  setIsLoggedIn, setUserData }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -23,8 +23,11 @@ const handleLogin = async (e) => {
       'http://localhost:3500/api/v1/auth/login',
       formData
     );
+    console.log(response.data)
     if (response.data.isLoggedIn) {
       setIsLoggedIn(true);
+      // console.log(response.data.user)
+      setUserData(response.data.user)
       navigate('/PersonalDashboard');
     } 
   } catch (error) {

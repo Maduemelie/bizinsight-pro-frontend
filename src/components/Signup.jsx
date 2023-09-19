@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../style/Signup.css';
-const Signup = () => {
+import { useNavigate } from 'react-router-dom';
+
+
+const Signup = ({setUserData, setIsLoggedIn}) => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -17,6 +20,8 @@ const Signup = () => {
     }));
   };
 
+  const navigate = useNavigate()
+
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
@@ -24,6 +29,19 @@ const Signup = () => {
         'http://localhost:3500/api/v1/auth/signUp',
         formData
       );
+      if (response.data.isLoggedIn) {
+        setIsLoggedIn(true);
+        // Set the user data in the state
+        setUserData(response.data.user);
+
+        // Store some data in local storage
+        localStorage.setItem('username', response.data.username);
+        localStorage.setItem('email', response.data.email);
+        // Add other local storage items as needed
+
+        // Redirect to /PersonalDashboard
+        navigate('/PersonalDashboard');
+      }
       console.log(response.data);
       // Handle successful sign up
     } catch (error) {

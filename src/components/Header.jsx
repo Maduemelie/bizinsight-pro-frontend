@@ -15,6 +15,9 @@ const Header = ({ isLoggedIn }) => {
           {isLoggedIn ? (
             <>
               <li>
+                <Link to="/PersonalDashboard">Dashboard</Link>
+              </li>
+              <li>
                 <Link to="/Sales">Sales</Link>
               </li>
               <li>
@@ -33,7 +36,7 @@ const Header = ({ isLoggedIn }) => {
           ) : (
             <>
               <li>
-                <Link to="/home">Home</Link>
+                <Link to="/">Home</Link>
               </li>
               <li>
                 <Link to="/features">Features</Link>
