@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import UserProfile from './UserProfile';
+import RevenueData from './RevenueData';
 import axios from 'axios'; // Import axios for HTTP requests
 import '../../style/PersonalDashboard.css';
 
 const PersonalDashboard = ({ userData, setUserData, isLoggedIn }) => {
-  // console.log(userData)
   const [isUploading, setIsUploading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -40,7 +40,6 @@ const PersonalDashboard = ({ userData, setUserData, isLoggedIn }) => {
           };
           setUserData(updatedUserData);
 
-          // Reset the state
           setIsUploading(false);
           setSelectedFile(null);
         }
@@ -50,30 +49,39 @@ const PersonalDashboard = ({ userData, setUserData, isLoggedIn }) => {
     }
   };
 
+  const renderUploadForm = () => {
+    return (
+      <form className="file-upload-form">
+        <input
+          type="file"
+          name="profilePicture"
+          onChange={handleFileChange}
+        />
+        <button className="upload-button" onClick={handleUpload}>
+          Upload
+        </button>
+      </form>
+    );
+  };
 
   return (
     <div className="personal-dashboard" encType="multipart/form-data">
-      <UserProfile user={userData} />
-      {isUploading ? (
-        <form className="file-upload-form">
-          {/* Display the file upload form */}
-          <input
-            type="file"
-            name="profilePicture"
-            onChange={handleFileChange}
-          />
-          <button className="upload-button" onClick={handleUpload}>
-            Upload
-          </button>
-        </form>
+      {userData.profilePicture ? (
+        <UserProfile user={userData} />
+      ) : isUploading ? (
+        renderUploadForm()
       ) : (
-        <button
-          className="upload-profile-button"
-          onClick={() => setIsUploading(true)}
-        >
-          Upload Profile Picture
-        </button>
+        <div>
+          <UserProfile user={userData} />
+          <button
+            className="upload-profile-button"
+            onClick={() => setIsUploading(true)}
+          >
+            Upload Profile Picture
+          </button>
+        </div>
       )}
+      <RevenueData  />
     </div>
   );
 };
