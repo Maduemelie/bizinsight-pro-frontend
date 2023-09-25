@@ -3,7 +3,7 @@ import axios from 'axios';
 import BarChart from './BarChart';
 
 const RevenueData = () => {
-  const [currentData, setCurrentData] = useState(null);
+  const [currentData, setCurrentData] = useState([]);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
@@ -58,7 +58,11 @@ const RevenueData = () => {
 
       <button onClick={fetchRevenueData}>Fetch Data</button>
       {console.log(currentData)}
-      {currentData ? <BarChart data={currentData} /> : <p>Loading...</p>}
+      {currentData && currentData.length > 0 ? (
+        <BarChart data={currentData} />
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };
