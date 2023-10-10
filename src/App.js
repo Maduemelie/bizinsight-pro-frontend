@@ -10,18 +10,18 @@ import Dashboard from 'components/dashboard';
 const App = () => {
   const mode = useSelector((state) => state.global.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
-
   return (
-    <div>
+    <div className="app">
       <Router>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-        </ThemeProvider>
-        <Routes>
-          <Route element={<Layout />} />
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
         </Routes>
+        </ThemeProvider>
       </Router>
     </div>
   );
