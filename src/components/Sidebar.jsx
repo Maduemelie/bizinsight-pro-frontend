@@ -152,20 +152,23 @@ const Sidebar = ({
                   );
                 }
                 const lowerCaseText = text.toLowerCase();
+                const cleanLowerCaseText = lowerCaseText.replace(/\s+/g, ''); // Remove spaces
                 return (
                   <ListItem key={text} disablePadding>
                     <ListItemButton
                       onClick={() => {
-                        navigate(`/${lowerCaseText}`);
-                        setActive(lowerCaseText);
+                        const url = `/${cleanLowerCaseText}`;
+                        console.log('Navigating to:', url);
+                        navigate(url);
+                        setActive(cleanLowerCaseText);
                       }}
                       sx={{
                         backgroundColor:
-                          active === lowerCaseText
+                          active === cleanLowerCaseText
                             ? theme.palette.secondary[300]
                             : 'transparent',
                         color:
-                          active === lowerCaseText
+                          active === cleanLowerCaseText
                             ? theme.palette.primary[600]
                             : theme.palette.secondary[100],
                       }}
@@ -174,7 +177,7 @@ const Sidebar = ({
                         sx={{
                           ml: '2rem',
                           color:
-                            active === lowerCaseText
+                            active === cleanLowerCaseText
                               ? theme.palette.primary[600]
                               : theme.palette.secondary[200],
                         }}
@@ -182,7 +185,7 @@ const Sidebar = ({
                         {icon}
                       </ListItemIcon>
                       <ListItemText primary={text} />
-                      {active === lowerCaseText && (
+                      {active === cleanLowerCaseText && (
                         <ChevronRightOutlined sx={{ ml: 'auto' }} />
                       )}
                     </ListItemButton>

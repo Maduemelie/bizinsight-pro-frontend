@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginSuccess, loginFailure } from 'state/authslice'; // Update this path
 import { setUserId } from 'state';
@@ -18,6 +19,7 @@ import {
 
 function Login() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,6 +47,7 @@ function Login() {
         localStorage.setItem('token', token);
         dispatch(setUserId(userId));
         dispatch(loginSuccess({ token, userId }));
+        navigate('/dashboard');
       } else {
         dispatch(loginFailure());
       }

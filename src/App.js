@@ -12,6 +12,9 @@ import { themeSettings } from 'theme';
 import Layout from 'components/layout';
 import Dashboard from 'components/dashboard';
 import Login from 'pages/Login';
+import Products from "components/Products"
+import Customers from "components/Customers"
+import Transactions from "components/Transactions"
 
 const App = () => {
   const mode = useSelector((state) => state.global.mode);
@@ -26,11 +29,23 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-           
+            <Route
+              path="/"
+              element={
+                isAuthenticated ? (
+                  <Navigate to="/dashboard" replace />
+                ) : (
+                  <Navigate to="/login" replace />
+                )
+              }
+            />
             <Route element={<Layout />}>
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/productmanagement" element={<Products />} />
+              <Route path="/customermanagement" element={<Customers />} />
+              <Route Path="/transactionmanagement" element={<Transactions />} />
             </Route>
+            <Route path="/login" element={<Login />} />
           </Routes>
         </ThemeProvider>
       </Router>
