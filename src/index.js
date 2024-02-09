@@ -1,17 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import globalReducer from './state/index';
+import authReducer from 'state/authslice';
+import { Provider } from 'react-redux';
+import { api } from 'state/api';
+import { setupListeners } from '@reduxjs/toolkit/query';
+
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
+const rootReducer = combineReducers({
+  auth: authReducer,
+  global: globalReducer,
+  [api.reducerPath]: api.reducer 
+});
+
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefault) => getDefault().concat(api.middleware),
+});
+setupListeners(store.dispatch);
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
- 
-    <App />
- 
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+);
